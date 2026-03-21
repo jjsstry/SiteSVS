@@ -1,16 +1,10 @@
-/* =============================================================
-   SCREEN VR STUDIOS — main.js
-   ============================================================= */
-
 'use strict';
 
-/* ---- Footer: auto-update copyright year ---- */
 document.querySelectorAll('#footer-year').forEach(el => {
     el.textContent = new Date().getFullYear();
 });
 
 
-/* ---- Header: shrink / shadow on scroll ---- */
 const header = document.getElementById('site-header');
 if (header) {
     window.addEventListener('scroll', () => {
@@ -19,7 +13,6 @@ if (header) {
 }
 
 
-/* ---- Hamburger menu ---- */
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobile-nav');
 
@@ -39,19 +32,16 @@ if (hamburger && mobileNav) {
         hamburger.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Close when a mobile nav link is clicked
     mobileNav.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', closeMobileNav);
     });
 
-    // Close when clicking outside the header
     document.addEventListener('click', e => {
         if (header && !header.contains(e.target)) closeMobileNav();
     });
 }
 
 
-/* ---- Active nav link (based on current page filename) ---- */
 (function highlightActiveNav() {
     const page = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -62,7 +52,6 @@ if (hamburger && mobileNav) {
 })();
 
 
-/* ---- Scroll-reveal animation ---- */
 const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -75,7 +64,6 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
-/* ---- Stat counter animation ---- */
 function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);
     if (!target || target === 0) return;
@@ -113,7 +101,6 @@ const statObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
 
 
-/* ---- Games filter (games.html) ---- */
 const filterBtns  = document.querySelectorAll('.filter-btn');
 const gamesGrid   = document.getElementById('games-grid');
 
@@ -132,7 +119,6 @@ if (filterBtns.length && gamesGrid) {
 
                 if (match) {
                     card.style.display = '';
-                    // Re-trigger the reveal animation
                     card.classList.remove('visible');
                     requestAnimationFrame(() => {
                         requestAnimationFrame(() => card.classList.add('visible'));
@@ -146,7 +132,6 @@ if (filterBtns.length && gamesGrid) {
 }
 
 
-/* ---- Contact form (contact.html) ---- */
 const contactForm  = document.getElementById('contact-form');
 const formSuccess  = document.getElementById('form-success');
 
@@ -154,10 +139,8 @@ if (contactForm) {
     contactForm.addEventListener('submit', e => {
         e.preventDefault();
 
-        // Clear previous error states
         contactForm.querySelectorAll('input, textarea').forEach(f => f.classList.remove('error'));
 
-        // Validate required fields
         let valid = true;
         contactForm.querySelectorAll('[required]').forEach(field => {
             if (!field.value.trim()) {
@@ -174,10 +157,6 @@ if (contactForm) {
         submitBtn.textContent = 'Sending…';
         submitBtn.disabled    = true;
 
-        /*
-         * TODO: Replace this timeout with a real form submission.
-         * e.g., fetch('/api/contact', { method: 'POST', body: new FormData(contactForm) })
-         */
         setTimeout(() => {
             submitBtn.textContent = origText;
             submitBtn.disabled    = false;
@@ -189,7 +168,6 @@ if (contactForm) {
         }, 1200);
     });
 
-    // Remove error highlight when user starts typing
     contactForm.querySelectorAll('input, textarea').forEach(field => {
         field.addEventListener('input', () => field.classList.remove('error'));
     });
