@@ -1447,10 +1447,18 @@ p:empty { display: none; }
 
     .cta-box       { padding: 42px 22px; }
 
-    .featured-game-img  { height: 380px; }
-    .featured-game-info { padding: 24px; max-width: 100%; justify-content: flex-end; }
-    .featured-game-overlay {
-        background: linear-gradient(to bottom, rgba(6,4,4,0.3) 0%, rgba(6,4,4,0.92) 100%);
+    /* Stacked layout: image on top, info below */
+    .featured-game          { overflow: visible; }
+    .featured-game-img      { height: 220px; overflow: hidden; border-radius: var(--radius) var(--radius) 0 0; }
+    .featured-game-overlay  { background: linear-gradient(to bottom, rgba(6,4,4,0.1) 0%, rgba(6,4,4,0.55) 100%); }
+    .featured-game-info     {
+        position: relative;
+        top: auto; right: auto; bottom: auto; left: auto;
+        padding: 22px 22px 28px;
+        max-width: 100%;
+        background: #161616;
+        border-radius: 0 0 var(--radius) var(--radius);
+        justify-content: flex-start;
     }
 
     .page-hero        { height: 260px; }
