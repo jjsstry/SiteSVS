@@ -1,0 +1,21 @@
+{
+  "name": "Screen VR Studios",
+  "short_name": "ScreenVR",
+  "description": "VR game developers based in England, UK. Creators of Fear Massive and Marmo.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0c0c0c",
+  "theme_color": "#b91c1c",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/FM_SquareLogoIcon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
