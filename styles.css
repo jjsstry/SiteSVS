@@ -797,7 +797,7 @@ p:empty { display: none; }
 .team-card-img {
     height: 250px;
     background:
-        var(--member-img, none) center top / cover no-repeat,
+        var(--member-img, none) center center / cover no-repeat,
         linear-gradient(160deg, #1a0808, #141414);
 }
 
