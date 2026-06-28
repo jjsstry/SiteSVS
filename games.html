@@ -9,7 +9,7 @@
     <meta property="og:image" content="https://screenvrstudios.com/logo.png">
     <meta property="og:url" content="https://screenvrstudios.com/games.html">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" sizes="5400x5400" href="/logo.png">
+    <link rel="icon" type="image/x-icon" href="/images/SVS.ico">
     <link rel="apple-touch-icon" href="/logo.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#4d85b0">
@@ -19,7 +19,12 @@
     <link rel="preload" as="image" href="images/MarmoShot1Blurred.png">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="preloading">
+
+    <div id="preloader">
+        <img src="logo.png" alt="Screen VR Studios" class="preloader-logo">
+        <div class="preloader-spinner"></div>
+    </div>
 
     <header class="site-header" id="site-header">
         <div class="header-inner container">
@@ -151,6 +156,20 @@
                 <div class="coming-soon-grid">
 
                     <div class="coming-soon-card reveal">
+                        <div class="coming-soon-img" style="--cs-img: url('images/Flunklug.jpg')">
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                        <div class="coming-soon-body">
+                            <h3>FLUNKLUG</h3>
+                            <p>Our next VR adventure is in the works. Flunklug is taking shape, and we can't wait to show you more. Join the Discord to follow development and be the first to know when it drops.</p>
+                            <span class="release-eta">Expected 2026</span>
+                            <div style="margin-top:16px;">
+                                <a href="https://discord.gg/YQxSgAFdZA" class="btn btn-sm">Join the Discord</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="coming-soon-card reveal">
                         <div class="coming-soon-img" style="--cs-img: url('images/upcoming1.jpg')">
                             <div class="coming-soon-badge">Coming Soon</div>
                         </div>
@@ -189,6 +208,7 @@
                     <ul>
                         <li><a href="https://www.meta.com/en-gb/experiences/fear-massive/7140885302658491/">FEAR MASSIVE</a></li>
                         <li><a href="https://www.meta.com/en-gb/experiences/marmo/24881288181514277/">MARMO</a></li>
+                        <li><a href="/flunklug">FLUNKLUG</a></li>
                         <li><a href="https://marmovr.com">marmovr.com</a></li>
                     </ul>
                 </div>

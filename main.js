@@ -1,5 +1,21 @@
 'use strict';
 
+const preloader = document.getElementById('preloader');
+if (preloader) {
+    const hidePreloader = () => {
+        if (preloader.classList.contains('loaded')) return;
+        preloader.classList.add('loaded');
+        document.body.classList.remove('preloading');
+    };
+
+    if (document.readyState === 'complete') {
+        hidePreloader();
+    } else {
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 6000);
+    }
+}
+
 document.querySelectorAll('#footer-year').forEach(el => {
     el.textContent = new Date().getFullYear();
 });

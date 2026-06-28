@@ -1,49 +1,80 @@
-/* =============================================================
-   SCREEN VR STUDIOS — Main Stylesheet
-   ============================================================= */
 
 :root {
-    /* Backgrounds — dark blue-grey */
     --bg-primary:    #15202e;
     --bg-secondary:  #1c2a3d;
     --bg-card:       #243348;
     --bg-header:     rgba(18, 28, 42, 0.97);
 
-    /* Accent — muted steel blue, not too saturated */
     --accent:          #4d85b0;
     --accent-bright:   #6fa8cc;
     --accent-steel:    #6b8096;
 
-    /* Text */
     --text-primary:   #f0f2f5;
     --text-secondary: #8a96a8;
     --text-muted:     #4a5568;
 
-    /* Borders */
     --border:       #2d3d55;
     --border-light: #374a64;
 
-    /* Effects */
     --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 
-    /* Layout */
     --section-pad:  80px 0;
     --container:    1200px;
     --radius:       10px;
     --radius-sm:    6px;
 
-    /* Fonts */
     --font-heading: 'Inter', sans-serif;
     --font-body:    'Inter', sans-serif;
 
-    /* Transitions */
     --ease: 0.28s ease;
 }
 
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    background: var(--bg-primary);
+    transition: opacity 0.55s ease, visibility 0.55s ease;
+}
 
-/* =============================================================
-   RESET & BASE
-   ============================================================= */
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-logo {
+    width: 90px;
+    height: auto;
+    animation: preloaderPulse 1.6s ease-in-out infinite;
+}
+
+.preloader-spinner {
+    width: 38px;
+    height: 38px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-bright);
+    border-radius: 50%;
+    animation: preloaderSpin 0.8s linear infinite;
+}
+
+@keyframes preloaderSpin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes preloaderPulse {
+    0%, 100% { opacity: 0.6; transform: scale(0.95); }
+    50%      { opacity: 1;   transform: scale(1); }
+}
+
+body.preloading {
+    overflow: hidden;
+}
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -85,11 +116,6 @@ button {
     font-family: inherit;
 }
 
-
-/* =============================================================
-   TYPOGRAPHY
-   ============================================================= */
-
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 700;
@@ -104,11 +130,6 @@ h3 { font-size: clamp(1.05rem, 2vw, 1.3rem); }
 
 p  { color: var(--text-secondary); font-size: 1rem; }
 p:empty { display: none; }
-
-
-/* =============================================================
-   LAYOUT UTILITIES
-   ============================================================= */
 
 .container {
     max-width: var(--container);
@@ -148,11 +169,6 @@ p:empty { display: none; }
     text-align: center;
     margin-top: 40px;
 }
-
-
-/* =============================================================
-   BUTTONS
-   ============================================================= */
 
 .btn {
     display: inline-flex;
@@ -200,11 +216,6 @@ p:empty { display: none; }
     width: 100%;
     justify-content: center;
 }
-
-
-/* =============================================================
-   HEADER / NAVIGATION
-   ============================================================= */
 
 .site-header {
     position: fixed;
@@ -330,11 +341,6 @@ p:empty { display: none; }
     padding: 10px 14px;
 }
 
-
-/* =============================================================
-   HERO BANNER (Homepage)
-   ============================================================= */
-
 .hero {
     position: relative;
     min-height: 100vh;
@@ -427,11 +433,6 @@ p:empty { display: none; }
     50%       { transform: translateX(-50%) translateY(7px); }
 }
 
-
-/* =============================================================
-   PAGE HERO (inner pages)
-   ============================================================= */
-
 .page-hero {
     position: relative;
     height: 340px;
@@ -462,11 +463,6 @@ p:empty { display: none; }
 .page-hero-content h1 { color: #fff; margin-bottom: 8px; }
 .page-hero-content p  { color: rgba(255,255,255,0.6); font-size: 1.1rem; }
 
-
-/* =============================================================
-   TWO-COLUMN GRID
-   ============================================================= */
-
 .two-col-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -485,11 +481,6 @@ p:empty { display: none; }
 .two-col-text h2  { margin: 10px 0 18px; }
 .two-col-text p   { margin-bottom: 16px; }
 .two-col-text .btn { margin-top: 8px; }
-
-
-/* =============================================================
-   GAME CARDS
-   ============================================================= */
 
 .games-grid {
     display: grid;
@@ -569,11 +560,6 @@ p:empty { display: none; }
     font-weight: 500;
 }
 
-
-/* =============================================================
-   STATS
-   ============================================================= */
-
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -612,11 +598,6 @@ p:empty { display: none; }
     text-transform: uppercase;
 }
 
-
-/* =============================================================
-   FEATURE CARDS
-   ============================================================= */
-
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -648,11 +629,6 @@ p:empty { display: none; }
     margin-bottom: 10px;
 }
 
-
-/* =============================================================
-   CTA BOX
-   ============================================================= */
-
 .cta-box {
     background: var(--bg-card);
     border-radius: var(--radius);
@@ -670,11 +646,6 @@ p:empty { display: none; }
     justify-content: center;
     flex-wrap: wrap;
 }
-
-
-/* =============================================================
-   ABOUT PAGE — VALUES
-   ============================================================= */
 
 .values-grid {
     display: grid;
@@ -705,11 +676,6 @@ p:empty { display: none; }
 
 .value-card h3 { font-size: 1rem; margin-bottom: 10px; }
 .value-card p  { font-size: 0.84rem; }
-
-
-/* =============================================================
-   TEAM CARDS
-   ============================================================= */
 
 .team-grid {
     display: grid;
@@ -784,11 +750,6 @@ p:empty { display: none; }
     border-color: var(--accent-bright);
     color: var(--accent-bright);
 }
-
-
-/* =============================================================
-   CONTACT PAGE
-   ============================================================= */
 
 .contact-grid {
     display: grid;
@@ -998,11 +959,6 @@ p:empty { display: none; }
     transform: translateX(4px);
 }
 
-
-/* =============================================================
-   GAMES PAGE — FEATURED GAME
-   ============================================================= */
-
 .featured-game {
     border-radius: var(--radius);
     overflow: hidden;
@@ -1080,8 +1036,6 @@ p:empty { display: none; }
     flex-wrap: wrap;
 }
 
-
-/* FILTER TABS */
 .filter-tabs {
     display: flex;
     gap: 8px;
@@ -1110,8 +1064,6 @@ p:empty { display: none; }
     color: #fff;
 }
 
-
-/* COMING SOON CARDS */
 .coming-soon-grid {
     display: flex;
     flex-wrap: wrap;
@@ -1171,11 +1123,6 @@ p:empty { display: none; }
     text-transform: uppercase;
     color: var(--accent-bright);
 }
-
-
-/* =============================================================
-   FOOTER
-   ============================================================= */
 
 .site-footer {
     background: #0e1822;
@@ -1243,11 +1190,6 @@ p:empty { display: none; }
 
 .footer-bottom a:hover { color: var(--accent-bright); }
 
-
-/* =============================================================
-   PRIVACY POLICY PAGE
-   ============================================================= */
-
 .policy-intro {
     font-size: 1rem;
     color: var(--text-secondary);
@@ -1314,11 +1256,6 @@ p:empty { display: none; }
 
 .policy-block strong { color: var(--text-primary); }
 
-
-/* =============================================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================================= */
-
 .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -1335,11 +1272,6 @@ p:empty { display: none; }
 .reveal:nth-child(4) { transition-delay: 0.24s; }
 .reveal:nth-child(5) { transition-delay: 0.32s; }
 .reveal:nth-child(6) { transition-delay: 0.40s; }
-
-
-/* =============================================================
-   RESPONSIVE — TABLET  (≤ 920px)
-   ============================================================= */
 
 @media (max-width: 920px) {
     .main-nav { display: none; }
@@ -1362,11 +1294,6 @@ p:empty { display: none; }
     .featured-game-info  { padding: 36px; }
     .coming-soon-card    { max-width: 100%; }
 }
-
-
-/* =============================================================
-   RESPONSIVE — MOBILE  (≤ 600px)
-   ============================================================= */
 
 @media (max-width: 600px) {
     :root { --section-pad: 56px 0; }
